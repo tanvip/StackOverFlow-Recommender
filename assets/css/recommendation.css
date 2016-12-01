@@ -21,3 +21,11 @@
   padding: 0px 5px;
   margin-right: 5px;
 }
+
+.font-medium {
+  font-size: 4rem;
+}
+
+.content-align-center {
+  text-align: center;
+}
