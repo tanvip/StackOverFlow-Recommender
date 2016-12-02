@@ -8,6 +8,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href = "assets/css/tree.css">
   <link rel="stylesheet" type="text/css" href = "assets/css/recommendation.css">
+  <link rel="stylesheet" type="text/css" href = "assets/css/util.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -23,6 +24,12 @@
           <div class="row">
             <div class="col-sm-3">
                <div class="item tags">Tags</div>
+               <div id="controls--tags">
+                 <!--Control tags fill here through main function in recommendation.js-->
+                 <!--Tag format looks like this-->
+
+                 <!--button class="btn btn-default">Submit Button</button-->
+               </div>
             </div><!--/.col-->
             <div class="col-sm-3">
                <div class="item date-range-slider">Date Range</div>
@@ -34,12 +41,12 @@
                <div class="item question-type">
                  <div class="checkbox">
                    <label>
-                     <input type="checkbox" value="unanswered">Show unanswered questions
+                     <input type="checkbox" value="unanswered" onclick="filterQuestionType(this)">Show unanswered questions
                    </label>
                  </div>
                  <div class="checkbox">
                    <label>
-                     <input type="checkbox" value="answered">Show answered questions
+                     <input type="checkbox" value="answered" onclick="filterQuestionType(this)">Show answered questions
                    </label>
                  </div>
                </div>
@@ -63,8 +70,11 @@
 					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg> Chat</div>
 
 					<div class="panel-body" id="questionList">
-						<ul>
-							<li class="left clearfix">
+            <!--List fills here through fillQuestions() in recommendation.js-->
+            <!--list format looks like this-->
+
+						<!--ul>
+							<li class="left clearfix animate-box-drop">
                 <div class="recommendation-box col-md-2">
                 </div>
                 <div class="question-list">
@@ -78,16 +88,20 @@
   									<p>
   										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
   									</p>
+                    <div class="question-tags">
+                      <button class="btn btn-default">Submit Button</button>
+                    </div>
 								 </div>
                </div>
 							</li>
-						</ul>
+						</ul-->
 					</div>
       </div>
     </div>
   </div>
   <!--script src="http://code.jquery.com/jquery-1.7.2.min.js"></script-->
   <script src="json/question-list.js"></script>
+  <script src="json/tag-list.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="assets/js/tree.js"></script>
   <script src="assets/js/recommendation.js"></script>
