@@ -26,7 +26,7 @@ d3.json("json/flare.json", function(error, flare) {
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;
-refresh();
+  refresh();
 });
 
 d3.select(self.frameElement).style("height", "800px");
