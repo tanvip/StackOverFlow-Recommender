@@ -1,7 +1,7 @@
 var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
-	
+
 	var lineChartData = {
-			labels : ["January","February","March","April","May","June","July"],
+			labels : ["00:00","02:00","04:00","06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00","24.00"],
 			datasets : [
 				{
 					label: "My First dataset",
@@ -11,7 +11,8 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+						randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 				},
 				{
 					label: "My Second dataset",
@@ -21,12 +22,13 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+						randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 				}
 			]
 
 		}
-		
+
 	var barChartData = {
 			labels : ["January","February","March","April","May","June","July"],
 			datasets : [
@@ -45,7 +47,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 				}
 			]
-	
+
 		}
 
 	var pieData = [
@@ -75,7 +77,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 				}
 
 			];
-			
+
 	var doughnutData = [
 					{
 						value: 300,
@@ -101,7 +103,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 						highlight: "#f6495f",
 						label: "Red"
 					}
-	
+
 				];
 
 window.onload = function(){
@@ -119,5 +121,5 @@ window.onload = function(){
 	var chart4 = document.getElementById("pie-chart").getContext("2d");
 	window.myPie = new Chart(chart4).Pie(pieData, {responsive : true
 	});
-	
+
 };
