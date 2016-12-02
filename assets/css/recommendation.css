@@ -36,3 +36,7 @@
 li.selected {
    background-color: #e9ecf2;
 }
+
+li.selected .btn{
+   background-color: white;
+}
