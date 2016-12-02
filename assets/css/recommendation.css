@@ -11,21 +11,20 @@
 .question-list {
   margin-bottom: 10px;
   padding: 15px 5px;
-  height: 50px;
 }
 
 .recommendation-box {
-  background-color: red;
+  background-color: blue;
   width: 1px;
   height: 100%;
   padding: 0px 5px;
   margin-right: 5px;
 }
 
-.font-medium {
-  font-size: 4rem;
+.question-tags {
 }
 
-.content-align-center {
-  text-align: center;
+.question-tags .btn {
+  margin-right: 8px;
+  cursor: default;
 }

@@ -1,5 +1,12 @@
+var unanswered = true,
+    answered = true;
+
+// TODO: Flush this object as soon as any node is selected from tree
+var deletedTags = {};
+
 window.addEventListener('DOMContentLoaded', function(e) {
-  main(e)
+  renderQuestions(e, null);
+  renderTags(e);
 }, true);
 
 function getTime(timeStamp_value) {
@@ -7,6 +14,60 @@ function getTime(timeStamp_value) {
   return theDate.toGMTString();
 }
 
+/*
+** renders questions in question panel
+** @param (event, boolean, boolean, string) => (event, question-type flag, question-type flag, tag to be removed)
+*/
+function renderQuestions(e) {
+  var list = '<ul>',
+      tagMatched = false;
+  for(var i=0; i < questionList.length; i++) {
+    if(!unanswered && questionList[i].answers.length == 0) {
+      continue;
+    }
+    if(!answered && questionList[i].answers.length > 0) {
+      continue;
+    }
+
+    if(deletedTags) {
+      for(var j = 0; j < questionList[i].tags.length ; j++) {
+        if(deletedTags[questionList[i].tags[j].toLowerCase()]) {
+          tagMatched = true;
+          break;
+        }
+      }
+      if(tagMatched) continue;
+    }
+
+    var tags = "<div class='question-tags'>";
+    for(var j = 0; j < questionList[i].tags.length ; j++) {
+      tags = tags + "<button class='btn btn-default'>"+questionList[i].tags[j] +"</button>";
+    }
+    tags = tags + '</div>';
+    var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div>",
+        content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers.length+"</span> </br> answers </span>"+ question +"</div>";
+        list = list + "<li onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2'></div> " + content + "</li>";
+  }
+
+  list = list + "</ul>";
+  document.getElementById("questionList").innerHTML = list;
+}
+
+function renderTags(e) {
+  //fill control-tags
+  var tags = "";
+  for(var i=0; i < tagList.length; i++) {
+    if(deletedTags[tagList[i].tag.toLowerCase()]) continue;
+    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ tagList[i].tag +" onclick='removeTag(this)'>"+ tagList[i].tag+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
+  }
+  document.getElementById("controls--tags").innerHTML = tags;
+}
+
+
+/********************CALLBACK FUNCTIONS****************/
+/*
+** checkbox onclick for question type control
+*/
 function questionOnClick(question) {
    if(question.classList.contains('selected')) {
      question.classList.remove('selected');
@@ -14,14 +75,24 @@ function questionOnClick(question) {
    question.classList.add('selected');
 }
 
-function main(e) {
-  //fill questions
-  var list = '<ul>';
-  for(var i=0; i < questionList.length; i++) {
-    var question = "<div class='chat-body clearfix'> <div class='header'> <strong class='primary-font'>John Doe</strong> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p></div>",
-        content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers.length+"</span> </br> answers </span>"+ question +"</div>";
-        list = list + "<li onclick='questionOnClick(this)' class='left clearfix'> <div class='recommendation-box col-md-2'></div> " + content + "</li>";
-  }
-  list = list + "</ul>";
-  document.getElementById("questionList").innerHTML = list;
+function filterQuestionType(e) {
+  var checkboxes = e.closest(".question-type").getElementsByTagName("input");
+    if(checkboxes[0].checked) {
+      unanswered = true;
+    } else {
+      unanswered = false;
+    }
+    if(checkboxes[1].checked) {
+      answered = true;
+    } else {
+      answered = false;
+    }
+    renderQuestions(e, null);
+}
+
+function removeTag(e) {
+  deletedTags[e.value.toLowerCase()] = true;
+  console.log(deletedTags);
+  renderQuestions(e, e.value);
+  renderTags(e);
 }
