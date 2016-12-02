@@ -187,6 +187,7 @@ function clearTag(tag)
     arr.forEach(function(d){d3.selectAll(d).style("stroke", defaultPathColor);})
 }
 
+// TODO: handle deletion of tags
 // dfs search to search the tag in the tree
 //isHighLight->true : opens all closed nodes which lie in the path to the tag
 //isHighLight->false : clears the tag in the tree and removes the highlighting
