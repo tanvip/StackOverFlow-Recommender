@@ -27,9 +27,9 @@ function getTime(timeStamp_value) {
 ** @param (event, boolean, boolean, string) => (event, question-type flag, question-type flag, tag to be removed)
 */
 function renderQuestions(e) {
-  var list = '<ul>',
-      tagMatched = false;
+  var list = '<ul>';
   for(var i=0; i < questionList.length; i++) {
+    var tagMatched = false;
     if(!unanswered && questionList[i].answers.length == 0) {
       continue;
     }
@@ -54,7 +54,7 @@ function renderQuestions(e) {
     tags = tags + '</div>';
     var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div>",
         content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers.length+"</span> </br> answers </span>"+ question +"</div>";
-        list = list + "<li onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2'></div> " + content + "</li>";
+        list = list + "<li data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2'></div> " + content + "</li>";
   }
 
   list = list + "</ul>";
@@ -96,8 +96,28 @@ function renderCharts(tag) {
 function questionOnClick(question) {
    if(question.classList.contains('selected')) {
      question.classList.remove('selected');
+   } else {
+     var children = question.parentElement.childNodes;
+     // deselect all other questions
+     for(var i=0; i < children.length; i++) {
+       if(children[i].classList.contains('selected')) {
+         children[i].classList.remove('selected');
+       }
+     }
+     question.classList.add('selected');
+     var selectedQuesIndex = question.getAttribute("data-index");
+     for(var i = 0; i < questionList.length ; i++) {
+       if(questionList[i].index == selectedQuesIndex) {
+         // from tree.js
+         refresh();
+         for(var j=0; j < questionList[i].tags.length; j++) {
+           // from tree.js
+           highlightTag(questionList[i].tags[j]);
+         }
+         break;
+       }
+     }
    }
-   question.classList.add('selected');
 }
 
 function filterQuestionType(e) {
@@ -116,6 +136,7 @@ function filterQuestionType(e) {
 }
 
 function removeTag(e) {
+  debugger;
   deletedTags[e.value.toLowerCase()] = true;
   renderQuestions(e, e.value);
   renderTags(e);

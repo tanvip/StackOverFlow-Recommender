@@ -4,7 +4,7 @@ var questionList = [
   "question":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. ",
   "tags": [
     "java",
-    "string"
+    "Android"
   ],
   "heat-map-index": 0,
   "timestamp":"1418296465",
@@ -20,7 +20,7 @@ var questionList = [
   "question":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. ",
   "tags": [
     "java",
-    "android",
+    "methods",
     "string"
   ],
   "heat-map-index": 0,
