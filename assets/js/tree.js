@@ -6,6 +6,7 @@ var i = 0,
     duration = 750,
     root,
     arr,
+    defaultPathColor = "#ccc"
     highlightColor = "red";
 
 var tree = d3.layout.tree()
@@ -175,13 +176,21 @@ function refresh()
 function highlightTag(tag)
 {
     arr = new Array();
-    highlightPath(root,tag);
+    highlightPath(root,tag,true);
     arr.forEach(function(d){d3.selectAll(d).style("stroke", highlightColor);})
 }
 
+function clearTag(tag)
+{
+    arr = new Array();
+    highlightPath(root,tag,false);
+    arr.forEach(function(d){d3.selectAll(d).style("stroke", defaultPathColor);})
+}
+
 // dfs search to search the tag in the tree
-//opens all closed nodes which lie in the path to the tag
-function highlightPath(node,tag) {
+//isHighLight->true : opens all closed nodes which lie in the path to the tag
+//isHighLight->false : clears the tag in the tree and removes the highlighting
+function highlightPath(node,tag,isHighLight) {
     var ret = false;
     if(node.name == tag)
     {
@@ -191,13 +200,19 @@ function highlightPath(node,tag) {
     if(children)
     {
         children.forEach(function(d){
-            var partOfPath = highlightPath(d,tag);//true if node->d is part of tag path
+            var partOfPath = highlightPath(d,tag,isHighLight);//true if node->d is part of tag path
             ret = ret || partOfPath;
             if(partOfPath)
             {
-                activate(node);
-                var temp = "#link-" + node.name + "-" + d.name;
-                arr.push(temp);
+                if(isHighLight)
+                {
+                    activate(node);
+                }
+                else
+                {
+                    deactivate(node);
+                }
+                arr.push("#link-" + node.name + "-" + d.name);
             }
         });
     }
