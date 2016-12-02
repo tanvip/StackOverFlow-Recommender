@@ -7,7 +7,15 @@ var deletedTags = {};
 window.addEventListener('DOMContentLoaded', function(e) {
   renderQuestions(e, null);
   renderTags(e);
+  renderCharts("java");
 }, true);
+
+/*
+** Called when a node is selected in tree
+*/
+function selectNode(tag) {
+  deletedTags = {};
+}
 
 function getTime(timeStamp_value) {
   var theDate = new Date(timeStamp_value * 1000);
@@ -53,14 +61,31 @@ function renderQuestions(e) {
   document.getElementById("questionList").innerHTML = list;
 }
 
+/*
+** renders tags in control panel
+*/
 function renderTags(e) {
-  //fill control-tags
   var tags = "";
-  for(var i=0; i < tagList.length; i++) {
-    if(deletedTags[tagList[i].tag.toLowerCase()]) continue;
-    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ tagList[i].tag +" onclick='removeTag(this)'>"+ tagList[i].tag+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
+  for(var obj in tagList) {
+    if(deletedTags[obj.toLowerCase()]) continue;
+    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ obj +" onclick='removeTag(this)'>"+ obj+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
   }
   document.getElementById("controls--tags").innerHTML = tags;
+}
+
+function renderCharts(tag) {
+  if(tagList[tag] == undefined || tagList[tag] ==null) {
+    console.log("Error: No tag found!");
+    document.getElementById("data-chart1").setAttribute("data-percent", 92);
+    document.getElementById("data-chart2").setAttribute("data-percent", 65);
+    document.getElementById("data-chart-header1").innerHTML = "<h4>Questions for <strong>JAVA</strong> tag</h4>";
+    document.getElementById("data-chart-header2").innerHTML = "<h4>Unanswered questions for <strong>JAVA</strong> tag</h4>";
+    return;
+  }
+  document.getElementById("data-chart1").setAttribute("data-percent", tagList[tag].questionPercent);
+  document.getElementById("data-chart2").setAttribute("data-percent", tagList[tag].unansweredQuestionPercent);
+  document.getElementById("data-chart-header1").innerHTML = "<h4>Questions for <strong>"+tag+"</strong> tag</h4>";
+  document.getElementById("data-chart-header2").innerHTML = "<h4>Unanswered questions for <strong>"+tag+"</strong> tag</h4>";
 }
 
 
@@ -92,7 +117,6 @@ function filterQuestionType(e) {
 
 function removeTag(e) {
   deletedTags[e.value.toLowerCase()] = true;
-  console.log(deletedTags);
   renderQuestions(e, e.value);
   renderTags(e);
 }

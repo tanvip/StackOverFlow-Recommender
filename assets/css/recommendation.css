@@ -28,3 +28,7 @@
   margin-right: 8px;
   cursor: default;
 }
+
+.item {
+  font-weight: bold;
+}

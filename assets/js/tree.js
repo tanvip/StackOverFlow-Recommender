@@ -123,15 +123,14 @@ function update(source) {
 // Toggle children on click.
 function click(d) {
   if (d.children) {
-    console.log("d.children");
     d._children = d.children;
     d.children = null;
   } else {
-    console.log("else");
     d.children = d._children;
     d._children = null;
   }
   update(d);
+  selectNode(d.name);
 }
 
 // If the node is not open it will open it

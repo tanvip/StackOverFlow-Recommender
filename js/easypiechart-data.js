@@ -26,5 +26,20 @@ $(function() {
    });
 });
 
+/** newly added charts**/
+$(function() {
+    $('#data-chart1').easyPieChart({
+        scaleColor: false,
+        barColor: '#ffb53e'
+    });
+});
+
+$(function() {
+    $('#data-chart2').easyPieChart({
+        scaleColor: false,
+        barColor: '#30a5ff'
+    });
+});
+
 $('#calendar').datepicker({
 	});
