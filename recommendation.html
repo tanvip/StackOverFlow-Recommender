@@ -103,7 +103,17 @@
     				</div>
     			</div>
         </div>
-
+        <!-- panel for keyword cloud -->
+        <div class="panel panel-default">
+            <div class="panel-body easypiechart-panel">
+                <div id="data-chart-header1">
+                    <h4>WordCloud for  <strong>JAVA</strong> keyword</h4>
+                </div>
+                <svg id="keyword-wordcloud" width="960" height="880">
+                </svg>
+            </div>
+        </div>
+        <!-- end of panel for keyword cloud -->
         <!--list of questions render here-->
         <div class="panel panel-default chat">
 					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg>Questions</div>
@@ -143,13 +153,16 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-
+  <script>var d3old = null;</script>
   <script src="json/question-list.js"></script>
   <script src="json/tag-list.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>var d3new = d3;</script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="assets/js/tree.js"></script>
   <script src="assets/js/recommendation.js"></script>
   <script src="js/chart-data.js"></script>
   <script src="js/easypiechart.js"></script>
   <script src="js/easypiechart-data.js"></script>
+  <script src="assets/js/bubble_chart.js"></script>
 </body>
