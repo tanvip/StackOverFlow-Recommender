@@ -1,4 +1,4 @@
-var questionList = [
+var qList = [
 {
   "index": 1,
   "question":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. ",
@@ -7,7 +7,7 @@ var questionList = [
     "Android"
   ],
   "heat-map-index": 0,
-  "timestamp":"1418296465",
+  "timestamp":"1393138800",
   "votes":214,
   "answers": [
     1,

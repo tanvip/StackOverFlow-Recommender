@@ -21,6 +21,41 @@ function getTime(timeStamp_value) {
   var theDate = new Date(timeStamp_value * 1000);
   return theDate.toGMTString();
 }
+window.watch("vote_min",function(id,oldval,newval){
+  myf(id,newval);
+  return newval;
+});
+window.watch("vote_max",function(id,oldval,newval){
+  myf(id,newval);
+  return newval;
+});
+window.watch("date_min",function(id,oldval,newval){
+  myf(id,newval);
+  return newval;
+});
+window.watch("date_max",function(id,oldval,newval){
+  myf(id,newval);
+  return newval;
+});
+
+function myf(a,b){
+
+  questionList = qList.filter((val) =>{
+
+  if(val.votes<vote_min || val.votes>vote_max){
+    return false;
+  }
+
+
+  if(new Date(val.timestamp*1000)< date_min || new Date(val.timestamp*1000)>date_max){
+    return false;
+  }
+    return true;
+  });
+  renderQuestions();
+  renderTags();
+  renderCharts("java");
+}
 
 /*
 ** renders questions in question panel
