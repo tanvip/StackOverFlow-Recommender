@@ -3,7 +3,7 @@
  "name": "java",
  "children": [
   {
-   "name": "Android",
+   "name": "Analytics",
    "children": [
     {
      "name": "cluster",
@@ -85,6 +85,7 @@
   },
   {
    "name": "display",
+   "val":10,
    "children": [
     {"name": "DirtySprite", "size": 8833},
     {"name": "LineSprite", "size": 1732},

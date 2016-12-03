@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href = "assets/css/recommendation.css">
   <link rel="stylesheet" type="text/css" href = "assets/css/util.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/iThing.css">
   <!--Icons-->
   <script src="js/lumino.glyphs.js"></script>
 
@@ -28,7 +29,7 @@
 					<span class="icon-bar"></span>
 				</button>
         <div class="padding-medium panel-teal">
-          <div class="row">
+          <div class="row filter">
             <div class="col-sm-3">
                <div class="item tags">Tags</div>
                <div id="controls--tags">
@@ -39,10 +40,21 @@
                </div>
             </div><!--/.col-->
             <div class="col-sm-3">
-               <div class="item date-range-slider">Date Range</div>
+               <div class="item date-range-slider">
+                   <div class="row">
+                     Date Range
+                   </div>
+                   <div class="row">
+
+                     <div id="dateSlider"></div>
+                   </div>
+               </div>
             </div><!--/.col-->
             <div class="col-sm-3">
-               <div class="item votes-slider">Votes</div>
+               <div class="row item votes-slider">Votes</div>
+               <div class="row">
+                 <div id="rangeSlider"></div>
+               </div>
             </div><!--/.col-->
             <div class="col-sm-3">
                <div class="item question-type">
@@ -140,6 +152,9 @@
   </div>
   <!--script src="http://code.jquery.com/jquery-1.7.2.min.js"></script-->
   <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			  crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
@@ -152,4 +167,28 @@
   <script src="js/chart-data.js"></script>
   <script src="js/easypiechart.js"></script>
   <script src="js/easypiechart-data.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderMouseTouch.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderDraggable.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderBar.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderHandle.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderLabel.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSlider.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQDateRangeSliderHandle.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQDateRangeSlider.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRuler.js"></script>
+  <script>$(document).ready(function() {
+    $("#dateSlider").dateRangeSlider({
+      bounds:{
+        min: new Date(2014, 0, 1),
+        max: new Date(2014, 11, 31)
+      },
+      defaultValues:{
+        min: new Date(2014, 1, 1),
+        max: new Date(2014, 10, 31)
+      },
+      wheelMode: "zoom"
+      });
+      $("#rangeSlider").rangeSlider();
+    });
+</script>
 </body>

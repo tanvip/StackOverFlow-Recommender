@@ -54,7 +54,7 @@ function renderQuestions(e) {
     tags = tags + '</div>';
     var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div>",
         content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers.length+"</span> </br> answers </span>"+ question +"</div>";
-        list = list + "<li data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2'></div> " + content + "</li>";
+        list = list + "<li data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+((questionList.length-i)/questionList.length)+"'></div> " + content + "</li>";
   }
 
   list = list + "</ul>";
