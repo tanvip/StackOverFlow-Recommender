@@ -68,7 +68,7 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-      .attr("r", 4.5)
+      .attr("r", function(d){ return d.val ? d.val : 4.5})
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeUpdate.select("text")
@@ -131,6 +131,7 @@ function click(d) {
     d._children = null;
   }
   update(d);
+  addRemoveTag(d.name);
   selectNode(d.name);
 }
 
@@ -142,7 +143,7 @@ function activate(d) {
     d.children = d._children;
     d._children = null;
   }
-  update(d);
+    update(d);
 }
 
 //If the node is open it will close it
