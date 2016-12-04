@@ -1,0 +1,13 @@
+id,value
+client server, 8
+server client, 4
+java socket, 3
+socket client, 3
+files client, 2
+client side, 2
+java server, 2
+socket java, 2
+client socket, 2
+telnet client, 2
+client client, 2
+client java, 2

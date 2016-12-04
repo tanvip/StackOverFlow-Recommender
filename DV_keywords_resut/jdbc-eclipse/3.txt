@@ -1,0 +1,11 @@
+id,value
+mysql jdbc, 7
+jdbc driver, 6
+lang classnotfoundexception, 4
+classnotfoundexception mysql, 4
+suitable driver, 2
+sql server, 2
+android jdbc, 2
+jdbc connection, 2
+no suitable, 2
+eclipse jdbc, 2

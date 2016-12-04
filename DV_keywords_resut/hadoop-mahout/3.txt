@@ -1,0 +1,5 @@
+id,value
+idf vectors, 2
+running mahout, 2
+tf idf, 2
+mahout hadoop, 2

@@ -20,13 +20,14 @@ var svg = d3.select("#nav-tree").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("json/flare.json", function(error, flare) {
+d3.json("json/flare4.json", function(error, flare) {
   if (error) throw error;
 
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;
   refresh();
+  bubble_chart_init(root.name);
 });
 
 d3.select(self.frameElement).style("height", "800px");

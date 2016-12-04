@@ -1,0 +1,12 @@
+id,value
+hibernate search, 3
+hibernate exception, 3
+hibernate criteria, 2
+table hibernate, 2
+fields hibernate, 2
+container hibernate, 2
+hql query, 2
+hibernate delete, 2
+hibernate level, 2
+jpa hibernate, 2
+hibernate annotation, 2

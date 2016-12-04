@@ -1,0 +1,18 @@
+id,value
+jdbc connection, 6
+org hibernate, 5
+hibernate jdbc, 4
+unable jdbc, 3
+hibernate mappingexception, 3
+mapping jdbc, 3
+jdbc type, 3
+no dialect, 3
+dialect mapping, 3
+jdbc driver, 3
+native sql, 2
+mysql query, 2
+hibernate hibernateexception, 2
+mappingexception no, 2
+sql server, 2
+hibernate spring, 2
+supply jdbc, 2

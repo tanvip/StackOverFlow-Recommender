@@ -1,0 +1,14 @@
+id,value
+tomcat jdbc, 5
+jdbc driver, 4
+jdbc connection, 4
+database jdbc, 3
+suitable driver, 2
+sql sqlexception, 2
+mysql jdbc, 2
+connection pooling, 2
+tomcat server, 2
+mysql connection, 2
+no suitable, 2
+sqlexception no, 2
+cannot load, 2

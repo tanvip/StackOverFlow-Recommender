@@ -1,0 +1,27 @@
+id,value
+jdbc, 23
+tomcat, 20
+connection, 9
+mysql, 9
+database, 9
+driver, 7
+pool, 4
+quot, 4
+server, 4
+how, 4
++, 3
+access, 3
+cannot, 3
+no, 3
+context, 2
+jar, 2
+pooling, 2
+starting, 2
+sqlexception, 2
+mysqlnontransientconnectionexception, 2
+connecting, 2
+classnotfoundexception, 2
+error, 2
+sql, 2
+load, 2
+suitable, 2

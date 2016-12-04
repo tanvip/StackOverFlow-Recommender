@@ -1,0 +1,8 @@
+id,value
+org apache, 4
+hadoop pig, 3
+pig custom, 2
+pig error, 2
+how load, 2
+apache hadoop, 2
+pig script, 2

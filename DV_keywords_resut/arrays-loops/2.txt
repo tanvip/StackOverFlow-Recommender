@@ -1,0 +1,23 @@
+id,value
+how i, 14
+arrays java, 5
+java program, 5
+nested loops, 5
+i loop, 3
+i print, 3
+java loop, 3
+generated numbers, 2
+array loop, 2
+galton box, 2
+java how, 2
+i return, 2
+arrays loop, 2
+specific number, 2
+partially filled, 2
+filled array, 2
+number generator, 2
+java fill, 2
+while loop, 2
+d d, 2
+loops generate, 2
+inside loop, 2

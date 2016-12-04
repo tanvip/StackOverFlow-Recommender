@@ -1,0 +1,13 @@
+id,value
+hibernate hql, 10
+hql query, 8
+update query, 5
+query hibernate, 3
+hql hibernate, 3
+hibernate query, 3
+query exception, 2
+query select, 2
+update table, 2
+unexpected token, 2
+how create, 2
+table hibernate, 2

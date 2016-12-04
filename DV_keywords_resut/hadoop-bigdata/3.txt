@@ -1,0 +1,3 @@
+id,value
+how hadoop, 2
+hadoop mapreduce, 2
