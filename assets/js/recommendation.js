@@ -37,12 +37,23 @@ window.watch("date_max",function(id,oldval,newval){
   myf(id,newval);
   return newval;
 });
+window.watch("ans_min",function(id,oldval,newval){
+  myf(id,newval);
+  return newval;
+});
+window.watch("ans_max",function(id,oldval,newval){
+  myf(id,newval);
+  return newval;
+});
 
 function myf(a,b){
 
   questionList = qList.filter((val) =>{
 
   if(val.votes<vote_min || val.votes>vote_max){
+    return false;
+  }
+  if(val.answers.length<ans_min || val.answers.length>ans_max){
     return false;
   }
 

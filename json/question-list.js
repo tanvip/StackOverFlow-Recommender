@@ -24,7 +24,7 @@ var qList = [
     "string"
   ],
   "heat-map-index": 0,
-  "timestamp":"1418296465",
+  "timestamp":"1399138800",
   "votes":214,
   "answers": [
     1,
