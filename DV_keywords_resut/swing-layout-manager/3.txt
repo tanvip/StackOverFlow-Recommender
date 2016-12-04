@@ -1,0 +1,21 @@
+id,value
+java swing, 12
+layout manager, 7
+how i, 7
+jpanel gridlayout, 3
+gridbaglayout component, 2
+layout java, 2
+i center, 2
+how add, 2
+jpanel jframe, 2
+swing layout, 2
+swing gridlayout, 2
+center align, 2
+extra space, 2
+layout jframe, 2
+how align, 2
+what layout, 2
+bottom jpanel, 2
+issues gridbaglayout, 2
+position components, 2
+boxlayout jframe, 2

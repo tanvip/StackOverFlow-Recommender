@@ -1,0 +1,18 @@
+id,value
+oracle db, 7
+hibernate criteria, 4
+oracle database, 3
+sql sqlexception, 2
+field oracle, 2
+foreign key, 2
+table oracle, 2
+query hibernate, 2
+save entity, 2
+select query, 2
+column hibernate, 2
+spring hibernate, 2
+criteria group, 2
+how i, 2
+data oracle, 2
+jpa hibernate, 2
+oracle sql, 2

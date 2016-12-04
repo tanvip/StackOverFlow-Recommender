@@ -1,0 +1,17 @@
+id,value
+hadoop hbase, 5
+org apache, 5
+apache hadoop, 5
+hbase table, 4
+hbase client, 4
+hbase java, 3
+data hbase, 3
+remote hbase, 3
+hbase error, 2
+hbase hbasestorage, 2
+why hbase, 2
+connect hbase, 2
+region server, 2
+access hbase, 2
+hadoop yarn, 2
+hbase masternotrunningexception, 2

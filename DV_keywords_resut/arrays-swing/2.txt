@@ -1,0 +1,11 @@
+id,value
+how i, 8
+d array, 4
+null pointer, 3
+change color, 2
+side side, 2
+getting values, 2
+i add, 2
+pointer exception, 2
+i create, 2
+i print, 2

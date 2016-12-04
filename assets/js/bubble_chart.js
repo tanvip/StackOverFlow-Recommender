@@ -1,6 +1,15 @@
 
-function init()
+function bubble_chart_init(tagName)
 {
+  var fileName;
+  if(root.name == tagName)
+  {
+      fileName = "android";
+  }
+  else {
+      fileName = getFileFromTag(root,tagName);
+  }
+  if(fileName.length < 1){alert("could not file keywords for specified tag");}
   var svg = d3new.select("#keyword-wordcloud"),
       width = +svg.attr("width");
   var format = d3new.format(",d");
@@ -8,7 +17,7 @@ function init()
   var pack = d3new.pack()
       .size([width, width])
       .padding(1.5);
-      d3new.csv("flare.csv", function(d) {
+      d3new.csv("http://localhost/dv/project/DataVisualization/DV_keywords_resut/" + fileName + "/1.txt", function(d) {
         d.value = +d.value;
         if (d.value) return d;
       }, function(error, classes) {
@@ -46,7 +55,7 @@ function init()
           .selectAll("tspan")
           .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
           .enter().append("tspan")
-            .attr("x", 0)
+            .attr("x", -10)
             .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
             .text(function(d) { return d; });
 

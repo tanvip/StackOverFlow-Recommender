@@ -1,0 +1,18 @@
+id,value
+ssl, 14
+java, 8
+socket, 8
+data, 5
+connection, 4
+server, 4
+handshake, 4
+certificate, 4
+client, 3
+sslsocket, 3
+tls, 3
+exception, 2
+create, 2
+sockets, 2
+ip, 2
+how, 2
+tcp, 2

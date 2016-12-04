@@ -1,0 +1,11 @@
+id,value
+jdbc driver, 3
+sql sqlexception, 2
+java mysql, 2
+mysql jdbc, 2
+prepare statement, 2
+oracle database, 2
+stored procedure, 2
+jsp mysql, 2
+jdbc connection, 2
+error connecting, 2
