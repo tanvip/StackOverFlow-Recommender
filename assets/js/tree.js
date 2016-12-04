@@ -130,6 +130,7 @@ function click(d) {
     d._children = null;
   }
   update(d);
+  addRemoveTag(d.name);
   selectNode(d.name);
 }
 
@@ -141,7 +142,7 @@ function activate(d) {
     d.children = d._children;
     d._children = null;
   }
-  update(d);
+    update(d);
 }
 
 //If the node is open it will close it

@@ -45,15 +45,38 @@ window.watch("ans_max",function(id,oldval,newval){
   myf(id,newval);
   return newval;
 });
+window.watch("tagListLength",function(id,oldval,newval){
+  filterByTag(id,newval);
+  return newval
+});
+
+function filterByTag(a,b){
+    questionList = qList.filter((val) =>{
+      // for(var tag in val.tags){
+      //   console.log(val.tags[tag]);
+      // }
+      for(tag in tagList){
+      //  console.log("taglist "+tag);
+        if(val.tags.indexOf(tag)===-1){
+          return false;
+        }
+      }
+    //  console.log(val.tags);
+      return true;
+
+        });
+        renderQuestions();
+        renderTags();
+        renderCharts("java");
+}
 
 function myf(a,b){
-
   questionList = qList.filter((val) =>{
 
   if(val.votes<vote_min || val.votes>vote_max){
     return false;
   }
-  if(val.answers.length<ans_min || val.answers.length>ans_max){
+  if(val.answers<ans_min || val.answers>ans_max){
     return false;
   }
 
@@ -76,10 +99,10 @@ function renderQuestions(e) {
   var list = '<ul>';
   for(var i=0; i < questionList.length; i++) {
     var tagMatched = false;
-    if(!unanswered && questionList[i].answers.length == 0) {
+    if(!unanswered && questionList[i].answers == 0) {
       continue;
     }
-    if(!answered && questionList[i].answers.length > 0) {
+    if(!answered && questionList[i].answers > 0) {
       continue;
     }
 
@@ -99,12 +122,13 @@ function renderQuestions(e) {
     }
     tags = tags + '</div>';
     var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div>",
-        content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers.length+"</span> </br> answers </span>"+ question +"</div>";
+        content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers+"</span> </br> answers </span>"+ question +"</div>";
         list = list + "<li data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+((questionList.length-i)/questionList.length)+"'></div> " + content + "</li>";
   }
 
   list = list + "</ul>";
   document.getElementById("questionList").innerHTML = list;
+  document.getElementById("heading-questions").innerHTML = questionList.length +" Questions";
 }
 
 /*
@@ -142,6 +166,7 @@ function renderCharts(tag) {
 function questionOnClick(question) {
    if(question.classList.contains('selected')) {
      question.classList.remove('selected');
+     refresh();
    } else {
      var children = question.parentElement.childNodes;
      // deselect all other questions
@@ -182,7 +207,6 @@ function filterQuestionType(e) {
 }
 
 function removeTag(e) {
-  debugger;
   deletedTags[e.value.toLowerCase()] = true;
   renderQuestions(e, e.value);
   renderTags(e);
