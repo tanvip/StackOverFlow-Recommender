@@ -14,6 +14,7 @@ function addRemoveTag (s,size,unanswered,d){
   }
   else{
     $.extend(tagList, tagName);
+    $.extend(tagList2, tagName);
   renderTags();
   }
   tagListLength=tagList.length;
