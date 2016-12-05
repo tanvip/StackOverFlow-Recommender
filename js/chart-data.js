@@ -11,8 +11,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
-						randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [16868,18898,23778,23353,24477,23500,20808,18965,15589,11401,9903,10510,14786]
 				},
 				{
 					label: "My Second dataset",
@@ -22,8 +21,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
-						randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [22989,25263,30292,29893,31257,29415,26298,25120, 20582,14667,12521,13959,19827]
 				}
 			]
 
@@ -107,10 +105,12 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 				];
 
 window.onload = function(){
+	if(document.getElementById("line-chart")) {
 	var chart1 = document.getElementById("line-chart").getContext("2d");
 	window.myLine = new Chart(chart1).Line(lineChartData, {
 		responsive: true
 	});
+}
 	/*
 	var chart2 = document.getElementById("bar-chart").getContext("2d");
 	window.myBar = new Chart(chart2).Bar(barChartData, {
