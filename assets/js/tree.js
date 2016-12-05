@@ -183,7 +183,6 @@ function highlightTag(tag)
 
 function clearTag(tag)
 {
-    console.log(tag);
     arr = new Array();
     highlightPath(root,tag,false);
     arr.forEach(function(d){d3.selectAll(d).style("stroke", defaultPathColor);})

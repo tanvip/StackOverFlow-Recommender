@@ -57,12 +57,11 @@ $(document).ready(function() {
   });
 var load=false;
   function adjustFilters(a){
+
     $(window).bind("load", function() {
       load=true;
 });
   if(load){
-    console.log(minVotes+" "+maxVotes+" "+ minAnswers+ " " + maxAnswers);
-    console.log( new Date(minDate*1000)+" "+ new Date(maxDate*1000));
     if(a=="ans_min" || a=="ans_max"){
       $("#rangeSlider").rangeSlider("values", minVotes, maxVotes);
       $("#dateSlider").dateRangeSlider("values", new Date(minDate*1000), new Date(maxDate*1000));
