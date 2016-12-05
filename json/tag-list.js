@@ -8,6 +8,7 @@ var tagList = {
       "child1",
       "child2"
     ],
-    parent: "java"
+    parent: "java",
+    size:0
   }
 }
