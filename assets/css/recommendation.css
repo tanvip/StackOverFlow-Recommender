@@ -42,23 +42,19 @@ li.selected .btn{
 }
 
 .filter{
-  text-align:center;
+  /*text-align:center;*/
 
 }
 #dateSlider{
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 8px;
   margin-bottom: 10px;
 }
 
 #rangeSlider{
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 8px;
   margin-bottom: 10px;
 }
 
 #answerSlider{
-  margin-left: 20px;
-  margin-right: 20px;
   margin-bottom: 10px;
 }
