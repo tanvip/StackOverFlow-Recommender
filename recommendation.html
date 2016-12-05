@@ -92,80 +92,103 @@
         <!--selection made by user in control panel is shown here-->
         <div class="selection"></div>
 
+
         <div class="row">
-          <div class="col-xs-6 col-md-6">
+          <div class="col-md-12">
     				<div class="panel panel-default">
-    					<div class="panel-body easypiechart-panel">
-                <div id="data-chart-header1">
-                  <!--rendered from renderCharts() in recommendation.js-->
-                  <!--h4>Questions for Android tag</h4-->
-                </div>
-                <h6><i class="fa fa-info-circle" aria-hidden="true"></i> Questions for selected tag / Total questions available in data set</h6>
-    						<div class="easypiechart" id="data-chart1" data-percent="92" ><span class="percent">92%</span>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
+    					<div class="panel-body tabs">
+    						<ul class="nav nav-tabs">
+    							<li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
+    							<li><a href="#tab2" data-toggle="tab"<i class="fa fa-line-chart" aria-hidden="true"></i></a></li>
+    						</ul>
 
-          <div class="col-xs-6 col-md-6">
-    				<div class="panel panel-default">
-    					<div class="panel-body easypiechart-panel">
-                <div id="data-chart-header2">
-                  <!--rendered from renderCharts() in recommendation.js-->
-                  <!--h4>Unanswered questions for Android tag</h4-->
-                </div>
-                <h6><i class="fa fa-info-circle" aria-hidden="true"></i> Unanswered questions for selected tag / Total questions for selected tag</h6>
-    						<div class="easypiechart" id="data-chart2" data-percent="65" ><span class="percent">65%</span>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-        </div>
-        <!-- panel for keyword cloud -->
-        <div class="panel panel-default">
-            <div class="panel-body easypiechart-panel">
-                <div id="data-chart-header1">
-                    <h4>WordCloud for  <strong>JAVA</strong> keyword</h4>
-                </div>
-                <svg id="keyword-wordcloud" width="960" height="880">
-                </svg>
-            </div>
-        </div>
-        <!-- end of panel for keyword cloud -->
-        <!--list of questions render here-->
-        <div class="panel panel-default chat">
-					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg>
-            <span id="heading-questions"></span>
-          </div>
+    						<div class="tab-content">
+    							<div class="tab-pane fade in active" id="tab1">
+    								<h4>Overview</h4>
+                    <div class="row">
+                    <div class="col-xs-6 col-md-6">
+              				<div class="panel panel-default">
+              					<div class="panel-body easypiechart-panel">
+                          <div id="data-chart-header1">
+                            <!--rendered from renderCharts() in recommendation.js-->
+                            <!--h4>Questions for Android tag</h4-->
+                          </div>
+                          <h6><i class="fa fa-info-circle" aria-hidden="true"></i> Questions for selected tag / Total questions available in data set</h6>
+              						<div class="easypiechart" id="data-chart1" data-percent="92" ><span class="percent">92%</span>
+              						</div>
+              					</div>
+              				</div>
+              			</div>
 
-					<div class="panel-body" id="questionList">
-            <!--List fills here through fillQuestions() in recommendation.js-->
-            <!--list format looks like this-->
+                    <div class="col-xs-6 col-md-6">
+              				<div class="panel panel-default">
+              					<div class="panel-body easypiechart-panel">
+                          <div id="data-chart-header2">
+                            <!--rendered from renderCharts() in recommendation.js-->
+                            <!--h4>Unanswered questions for Android tag</h4-->
+                          </div>
+                          <h6><i class="fa fa-info-circle" aria-hidden="true"></i> Unanswered questions for selected tag / Total questions for selected tag</h6>
+              						<div class="easypiechart" id="data-chart2" data-percent="65" ><span class="percent">65%</span>
+              						</div>
+              					</div>
+              				</div>
+              			</div>
+                  </div>
+                  <div class="row">
+                    <!--list of questions render here-->
+                    <div class="panel panel-default chat">
+                      <div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg>
+                        <span id="heading-questions"></span>
+                      </div>
 
-						<!--ul>
-							<li class="left clearfix animate-box-drop">
-                <div class="recommendation-box col-md-2">
-                </div>
-                <div class="question-list">
-  								<span class="chat-img pull-left content-align-center">
-                    <span class="font-medium">0</span> </br> answers
-  								</span>
-  								<div class="chat-body clearfix">
-  									<div class="header">
-  										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-  									</div>
-  									<p>
-  										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
-  									</p>
-                    <div class="question-tags">
-                      <button class="btn btn-default">Submit Button</button>
+                      <div class="panel-body" id="questionList">
+                        <!--List fills here through fillQuestions() in recommendation.js-->
+                        <!--list format looks like this-->
+
+                        <!--ul>
+                          <li class="left clearfix animate-box-drop">
+                            <div class="recommendation-box col-md-2">
+                            </div>
+                            <div class="question-list">
+                              <span class="chat-img pull-left content-align-center">
+                                <span class="font-medium">0</span> </br> answers
+                              </span>
+                              <div class="chat-body clearfix">
+                                <div class="header">
+                                  <strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
+                                </div>
+                                <p>
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
+                                </p>
+                                <div class="question-tags">
+                                  <button class="btn btn-default">Submit Button</button>
+                                </div>
+                             </div>
+                           </div>
+                          </li>
+                        </ul-->
+                      </div>
+                  </div>
+                  </div>
+
+    							</div>
+    							<div class="tab-pane fade" id="tab2">
+    								<h4>WordCloud for  <strong>JAVA</strong> keyword</h4>
+                    <!-- panel for keyword cloud -->
+                    <div class="panel panel-default">
+                        <div class="panel-body easypiechart-panel">
+                            <svg id="keyword-wordcloud" width="960" height="880">
+                            </svg>
+                        </div>
                     </div>
-								 </div>
-               </div>
-							</li>
-						</ul-->
-					</div>
-      </div>
+                    <!-- end of panel for keyword cloud -->
+    							</div>
+    						</div>
+    					</div>
+    				</div><!--/.panel-->
+    			</div><!--/.col-->
+        </div>
+
     </div>
   </div>
   <!--script src="http://code.jquery.com/jquery-1.7.2.min.js"></script-->
