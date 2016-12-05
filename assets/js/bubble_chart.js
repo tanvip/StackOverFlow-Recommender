@@ -13,8 +13,8 @@ function bubble_chart_init(tagName)
   d3new.select("#keyword-wordcloud").select('svg').remove();
   var svg = d3new.select("#keyword-wordcloud")
                   .append('svg')
-                  .attr('width',960)
-                  .attr('height',880);
+                  .attr('width',560)
+                  .attr('height',580);
   var  width = +svg.attr("width");
   var format = d3new.format(",d");
   var color = d3new.scaleOrdinal(d3new.schemeCategory20c);
