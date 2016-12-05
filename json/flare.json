@@ -3,7 +3,7 @@
  "name": "java",
  "children": [
   {
-   "name": "analytics",
+   "name": "Analytics",
    "children": [
     {
      "name": "cluster",
@@ -15,7 +15,7 @@
      ]
     },
     {
-     "name": "graph",
+     "name": "Spring",
      "children": [
       {"name": "BetweennessCentrality", "size": 3534},
       {"name": "LinkDistance", "size": 5731},
@@ -85,6 +85,7 @@
   },
   {
    "name": "display",
+   "val":10,
    "children": [
     {"name": "DirtySprite", "size": 8833},
     {"name": "LineSprite", "size": 1732},

@@ -8,10 +8,19 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href = "assets/css/tree.css">
   <link rel="stylesheet" type="text/css" href = "assets/css/recommendation.css">
+  <link rel="stylesheet" type="text/css" href = "assets/css/util.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/iThing.css">
+  <!--Icons-->
+  <script src="js/lumino.glyphs.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-inverse" role="navigation">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
 					<span class="sr-only">Toggle navigation</span>
@@ -19,27 +28,51 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-        <div class="panel-teal">
-          <div class="row">
+        <div class="padding-medium panel-teal">
+          <div class="row filter">
             <div class="col-sm-3">
                <div class="item tags">Tags</div>
+               <div id="controls--tags">
+                 <!--Control tags fill here through main function in recommendation.js-->
+                 <!--Tag format looks like this-->
+
+                 <!--button class="btn btn-default">Submit Button</button-->
+               </div>
             </div><!--/.col-->
-            <div class="col-sm-3">
-               <div class="item date-range-slider">Date Range</div>
+            <div class="col-sm-2">
+               <div class="item date-range-slider">
+                   <div class="row">
+                     Date Range
+                   </div>
+                   <div class="row">
+
+                     <div id="dateSlider"></div>
+                   </div>
+               </div>
             </div><!--/.col-->
-            <div class="col-sm-3">
-               <div class="item votes-slider">Votes</div>
+            <div class="col-sm-2">
+               <div class="row item votes-slider">Votes</div>
+               <div class="row">
+                 <div id="rangeSlider"></div>
+               </div>
+            </div><!--/.col-->
+            <div class="col-sm-2">
+               <div class="row item answers-slider">No. of Answers</div>
+               <div class="row">
+                 <div id="answerSlider"></div>
+               </div>
             </div><!--/.col-->
             <div class="col-sm-3">
                <div class="item question-type">
+                 Question Type
                  <div class="checkbox">
                    <label>
-                     <input type="checkbox" value="unanswered">Show unanswered questions
+                     <input type="checkbox" value="unanswered" onclick="filterQuestionType(this)">Show unanswered questions
                    </label>
                  </div>
                  <div class="checkbox">
                    <label>
-                     <input type="checkbox" value="answered">Show answered questions
+                     <input type="checkbox" value="answered" onclick="filterQuestionType(this)">Show answered questions
                    </label>
                  </div>
                </div>
@@ -48,6 +81,7 @@
         </div>
 			</div>
 	</nav>
+
   <div class="row">
     <div class="content">
       <div class="col-md-4">
@@ -57,104 +91,137 @@
       <div class="col-md-8">
         <!--selection made by user in control panel is shown here-->
         <div class="selection"></div>
-        <div class="stats"></div>
-        <!--list of questions render here-->
-        <div class="panel panel-default chat">
-					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg> Chat</div>
 
-					<div class="panel-body">
-						<ul>
-							<li class="left clearfix">
-                <div class="recommendation-box col-md-2">
-                </div>
-                <div class="question-list">
-  								<span class="chat-img pull-left">
-  									<i class="unanswered-icon fa fa-square-o"></i>
-  								</span>
-  								<div class="chat-body clearfix">
-  									<div class="header">
-  										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-  									</div>
-  									<p>
-  										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
-  									</p>
-								 </div>
-               </div>
-							</li>
-              <li class="left clearfix">
-                <div class="recommendation-box col-md-2">
-                </div>
-                <div class="question-list">
-  								<span class="chat-img pull-left">
-  									<i class="answered-icon fa fa-check-square-o"></i>
-  								</span>
-  								<div class="chat-body clearfix">
-  									<div class="header">
-  										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-  									</div>
-  									<p>
-  										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
-  									</p>
-								 </div>
-               </div>
-              </li>
-							<li class="left clearfix">
-                <div class="recommendation-box col-md-2" style="background-color: #ff3333">
-                </div>
-                <div class="question-list">
-  								<span class="chat-img pull-left">
-  									<i class="answered-icon fa fa-check-square-o"></i>
-  								</span>
-  								<div class="chat-body clearfix">
-  									<div class="header">
-  										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-  									</div>
-  									<p>
-  										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
-  									</p>
-								 </div>
-               </div>
-							</li>
-              <li class="left clearfix">
-                <div class="recommendation-box col-md-2" style="background-color: #ff6666">
-                </div>
-                <div class="question-list">
-  								<span class="chat-img pull-left">
-  									<i class="unanswered-icon fa fa-square-o"></i>
-  								</span>
-  								<div class="chat-body clearfix">
-  									<div class="header">
-  										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-  									</div>
-  									<p>
-  										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
-  									</p>
-								 </div>
-               </div>
-							</li>
-              <li class="left clearfix">
-                <div class="recommendation-box col-md-2" style="background-color: #ff6666">
-                </div>
-                <div class="question-list">
-  								<span class="chat-img pull-left">
-  									<i class="answered-icon fa fa-check-square-o"></i>
-  								</span>
-  								<div class="chat-body clearfix">
-  									<div class="header">
-  										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-  									</div>
-  									<p>
-  										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
-  									</p>
-								 </div>
-               </div>
-							</li>
-						</ul>
-					</div>
-      </div>
+
+        <div class="row">
+          <div class="col-md-12">
+    				<div class="panel panel-default">
+    					<div class="panel-body tabs">
+    						<ul class="nav nav-tabs">
+    							<li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
+    							<li><a href="#tab2" data-toggle="tab"<i class="fa fa-line-chart" aria-hidden="true"></i></a></li>
+    						</ul>
+
+    						<div class="tab-content">
+    							<div class="tab-pane fade in active" id="tab1">
+    								<h4>Overview</h4>
+                    <div class="row">
+                    <div class="col-xs-6 col-md-6">
+              				<div class="panel panel-default">
+              					<div class="panel-body easypiechart-panel">
+                          <div id="data-chart-header1">
+                            <!--rendered from renderCharts() in recommendation.js-->
+                            <!--h4>Questions for Android tag</h4-->
+                          </div>
+                          <h6><i class="fa fa-info-circle" aria-hidden="true"></i> Questions for selected tag / Total questions available in data set</h6>
+              						<div class="easypiechart" id="data-chart1" data-percent="92" ><span class="percent">92%</span>
+              						</div>
+              					</div>
+              				</div>
+              			</div>
+
+                    <div class="col-xs-6 col-md-6">
+              				<div class="panel panel-default">
+              					<div class="panel-body easypiechart-panel">
+                          <div id="data-chart-header2">
+                            <!--rendered from renderCharts() in recommendation.js-->
+                            <!--h4>Unanswered questions for Android tag</h4-->
+                          </div>
+                          <h6><i class="fa fa-info-circle" aria-hidden="true"></i> Unanswered questions for selected tag / Total questions for selected tag</h6>
+              						<div class="easypiechart" id="data-chart2" data-percent="65" ><span class="percent">65%</span>
+              						</div>
+              					</div>
+              				</div>
+              			</div>
+                  </div>
+                  <div class="row">
+                    <!--list of questions render here-->
+                    <div class="panel panel-default chat">
+                      <div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg>
+                        <span id="heading-questions"></span>
+                      </div>
+
+                      <div class="panel-body" id="questionList">
+                        <!--List fills here through fillQuestions() in recommendation.js-->
+                        <!--list format looks like this-->
+
+                        <!--ul>
+                          <li class="left clearfix animate-box-drop">
+                            <div class="recommendation-box col-md-2">
+                            </div>
+                            <div class="question-list">
+                              <span class="chat-img pull-left content-align-center">
+                                <span class="font-medium">0</span> </br> answers
+                              </span>
+                              <div class="chat-body clearfix">
+                                <div class="header">
+                                  <strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
+                                </div>
+                                <p>
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies.
+                                </p>
+                                <div class="question-tags">
+                                  <button class="btn btn-default">Submit Button</button>
+                                </div>
+                             </div>
+                           </div>
+                          </li>
+                        </ul-->
+                      </div>
+                  </div>
+                  </div>
+
+    							</div>
+    							<div class="tab-pane fade" id="tab2">
+    								<h4>WordCloud for  <strong>JAVA</strong> keyword</h4>
+                    <!-- panel for keyword cloud -->
+                    <div class="panel panel-default">
+                        <div class="panel-body easypiechart-panel">
+                            <svg id="keyword-wordcloud" width="960" height="880">
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- end of panel for keyword cloud -->
+    							</div>
+    						</div>
+    					</div>
+    				</div><!--/.panel-->
+    			</div><!--/.col-->
+        </div>
+
     </div>
   </div>
   <!--script src="http://code.jquery.com/jquery-1.7.2.min.js"></script-->
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			  crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+  <script>var d3old = null;</script>
+  <script src="json/question-list.js"></script>
+  <script src="json/tag-list.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>var d3new = d3;</script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="assets/js/utils.js"></script>
   <script src="assets/js/tree.js"></script>
+  <script src="assets/js/bubble_chart.js"></script>
+  <script src="assets/js/recommendation.js"></script>
+  <script src="js/chart-data.js"></script>
+  <script src="js/easypiechart.js"></script>
+  <script src="js/easypiechart-data.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderMouseTouch.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderDraggable.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderBar.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderHandle.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderLabel.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSlider.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQDateRangeSliderHandle.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQDateRangeSlider.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRuler.js"></script>
+  <script src="assets/js/filters.js"></script>
+  <script src="assets/js/tagLoader.js"></script>
+
 </body>

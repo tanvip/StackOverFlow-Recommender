@@ -1,0 +1,109 @@
+/** Animation styles **/
+.animate-box-drop {
+    -moz-animation-name: dropHeader;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-duration: 0.5s;
+
+    -webkit-animation-name: dropHeader;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 0.5s;
+
+    animation-name: dropHeader;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+.animate-box-lift {
+    -moz-animation-name: liftHeader;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-duration: 0.5s;
+
+    -webkit-animation-name: liftHeader;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 0.5s;
+
+    animation-name: liftHeader;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+@-moz-keyframes dropHeader {
+    0% {
+        -moz-transform: translateY(-40px);
+    }
+    100% {
+        -moz-transform: translateY(0);
+    }
+}
+@-webkit-keyframes dropHeader {
+    0% {
+        -webkit-transform: translateY(-40px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+    }
+}
+@keyframes dropHeader {
+    0% {
+        transform: translateY(-40px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@-moz-keyframes liftHeader {
+    0% {
+        -moz-transform: translateY(40px);
+    }
+    100% {
+        -moz-transform: translateY(0);
+    }
+}
+@-webkit-keyframes liftHeader {
+    0% {
+        -webkit-transform: translateY(40px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+    }
+}
+@keyframes liftHeader {
+    0% {
+        transform: translateY(40px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/**util styles**/
+.padding-small {
+  padding: 2px!important;
+}
+
+.padding-medium {
+  padding: 10px!important;
+}
+
+.margin-right-small {
+  margin-right: 2px;
+}
+
+.margin-right-medium {
+  margin-right: 10px;
+}
+
+.font-medium {
+  font-size: 4rem;
+}
+
+.content-align-center {
+  text-align: center;
+}

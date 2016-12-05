@@ -1,0 +1,27 @@
+id,value
+create table, 5
+hibernate create, 4
+database postgresql, 3
+hibernate configuration, 3
+postgres hibernate, 3
+jpa hibernate, 3
+jpa postgresql, 2
+hibernate one, 2
+postgresql hstore, 2
+java hibernate, 2
+hibernate postgresql, 2
+hibernate mapping, 2
+case insensitive, 2
+org hibernate, 2
+hibernate type, 2
+how i, 2
+inserted hibernate, 2
+function hibernate, 2
+table quot, 2
+hibernate updating, 2
+generate hibernate, 2
+org postgresql, 2
+hibernate doesn, 2
+jdbc driver, 2
+hibernate exception, 2
+pojos database, 2
