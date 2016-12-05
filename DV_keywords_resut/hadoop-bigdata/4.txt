@@ -1,0 +1,5 @@
+id,value
+hadoop, 8
+mapreduce, 2
+directory, 2
+spark, 2

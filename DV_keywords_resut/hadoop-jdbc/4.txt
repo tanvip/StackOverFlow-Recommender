@@ -1,0 +1,12 @@
+id,value
+hive, 12
+jdbc, 10
+connection, 3
+select, 2
+unset, 2
+protocol, 2
+java, 2
+query, 2
+server, 2
+hadoop, 2
+table, 2
