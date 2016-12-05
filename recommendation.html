@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href = "assets/css/recommendation.css">
   <link rel="stylesheet" type="text/css" href = "assets/css/util.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/iThing.css">
   <!--Icons-->
   <script src="js/lumino.glyphs.js"></script>
 
@@ -28,7 +29,7 @@
 					<span class="icon-bar"></span>
 				</button>
         <div class="padding-medium panel-teal">
-          <div class="row">
+          <div class="row filter">
             <div class="col-sm-3">
                <div class="item tags">Tags</div>
                <div id="controls--tags">
@@ -38,11 +39,28 @@
                  <!--button class="btn btn-default">Submit Button</button-->
                </div>
             </div><!--/.col-->
-            <div class="col-sm-3">
-               <div class="item date-range-slider">Date Range</div>
+            <div class="col-sm-2">
+               <div class="item date-range-slider">
+                   <div class="row">
+                     Date Range
+                   </div>
+                   <div class="row">
+
+                     <div id="dateSlider"></div>
+                   </div>
+               </div>
             </div><!--/.col-->
-            <div class="col-sm-3">
-               <div class="item votes-slider">Votes</div>
+            <div class="col-sm-2">
+               <div class="row item votes-slider">Votes</div>
+               <div class="row">
+                 <div id="rangeSlider"></div>
+               </div>
+            </div><!--/.col-->
+            <div class="col-sm-2">
+               <div class="row item answers-slider">No. of Answers</div>
+               <div class="row">
+                 <div id="answerSlider"></div>
+               </div>
             </div><!--/.col-->
             <div class="col-sm-3">
                <div class="item question-type">
@@ -103,10 +121,22 @@
     				</div>
     			</div>
         </div>
-
+        <!-- panel for keyword cloud -->
+        <div class="panel panel-default">
+            <div class="panel-body easypiechart-panel">
+                <div id="data-chart-header1">
+                    <h4>WordCloud for  <strong>JAVA</strong> keyword</h4>
+                </div>
+                <svg id="keyword-wordcloud" width="960" height="880">
+                </svg>
+            </div>
+        </div>
+        <!-- end of panel for keyword cloud -->
         <!--list of questions render here-->
         <div class="panel panel-default chat">
-					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg>Questions</div>
+					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg>
+            <span id="heading-questions"></span>
+          </div>
 
 					<div class="panel-body" id="questionList">
             <!--List fills here through fillQuestions() in recommendation.js-->
@@ -140,16 +170,35 @@
   </div>
   <!--script src="http://code.jquery.com/jquery-1.7.2.min.js"></script-->
   <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			  crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-
+  <script>var d3old = null;</script>
   <script src="json/question-list.js"></script>
   <script src="json/tag-list.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>var d3new = d3;</script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="assets/js/utils.js"></script>
   <script src="assets/js/tree.js"></script>
+  <script src="assets/js/bubble_chart.js"></script>
   <script src="assets/js/recommendation.js"></script>
   <script src="js/chart-data.js"></script>
   <script src="js/easypiechart.js"></script>
   <script src="js/easypiechart-data.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderMouseTouch.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderDraggable.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderBar.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderHandle.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSliderLabel.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRangeSlider.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQDateRangeSliderHandle.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQDateRangeSlider.js"></script>
+  <script src="http://ghusse.github.io/jQRangeSlider/stable/jQRuler.js"></script>
+  <script src="assets/js/filters.js"></script>
+  <script src="assets/js/tagLoader.js"></script>
+
 </body>
