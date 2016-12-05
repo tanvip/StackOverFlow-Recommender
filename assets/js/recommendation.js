@@ -25,7 +25,6 @@ function selectNode(tag) {
   deletedTags = {};
   renderCharts(tag);
   bubble_chart_init(tag);
-  console.log(tagList);
 }
 
 function getTime(timeStamp_value) {
@@ -33,27 +32,45 @@ function getTime(timeStamp_value) {
   return theDate.toGMTString();
 }
 window.watch("vote_min",function(id,oldval,newval){
-  myf(id,newval);
+  //myf(id,newval);
+  setTimeout(function(){
+    myf(id,newval);
+  },500);
   return newval;
 });
 window.watch("vote_max",function(id,oldval,newval){
+//  myf(id,newval);
+setTimeout(function(){
   myf(id,newval);
+},500);
   return newval;
 });
 window.watch("date_min",function(id,oldval,newval){
-  myf(id,newval);
+  //myf(id,newval);
+  setTimeout(function(){
+    myf(id,newval);
+  },500);
   return newval;
 });
 window.watch("date_max",function(id,oldval,newval){
-  myf(id,newval);
+  //myf(id,newval);
+  setTimeout(function(){
+    myf(id,newval);
+  },500);
   return newval;
 });
 window.watch("ans_min",function(id,oldval,newval){
-  myf(id,newval);
+  //myf(id,newval);
+  setTimeout(function(){
+    myf(id,newval);
+  },500);
   return newval;
 });
 window.watch("ans_max",function(id,oldval,newval){
+//  myf(id,newval);
+setTimeout(function(){
   myf(id,newval);
+},500);
   return newval;
 });
 window.watch("tagListLength",function(id,oldval,newval){
@@ -79,6 +96,7 @@ function filterByTag(a,b){
 }
 
 function myf(a,b){
+
   questionList = qList.filter((val) =>{
 
   if(val.votes<vote_min || val.votes>vote_max){
@@ -94,7 +112,7 @@ function myf(a,b){
   }
     return true;
   });
-  filterByTag(a,b);
+  //filterByTag(a,b);
   renderQuestions(a,b);
   renderTags(a,b);
   renderCharts("java");
@@ -146,13 +164,15 @@ function renderQuestions(a,b) {
   //  var recommended = "<button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#collapseExample"+i+"' aria-expanded='false' aria-controls='collapseExample'>Button</button>"
     var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><h4>"+ questionList[i].question +"</h4> "+tags+"</div><div class='recos'><li class='collapse' id='collapseExample"+i+"'><div class='well'>"+recommended_questions+"</div></li></div>",
         content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers+"</span> </br> answers </span>"+ question +"</div>";
-        list = list + "<li data-id="+i+" data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+(questionList[i].votes/40)+"'></div> " + content + "</li>";
+        list = list + "<li data-id="+i+" data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+((questionList[i].votes/maxVotes)/2+((maxAnswers-questionList[i].answers)/maxAnswers)/2)+"'></div> " + content + "</li>";
   }
 
   list = list + "</ul>";
   document.getElementById("questionList").innerHTML = list;
   document.getElementById("heading-questions").innerHTML = questionList.length +" Questions";
+
   adjustFilters(a);
+
 //  console.log("min - "+minAnswers+"  "+minVotes+"  "+ new Date(minDate*1000).toGMTString());
   //console.log("max - "+maxAnswers+"  "+maxVotes+"  "+ new Date(maxDate*1000).toGMTString());
 }
@@ -172,7 +192,6 @@ function renderCharts(tag) {
   var questionPercent = (tagList2[tag].size / 215968 * 100).toFixed(2);
 
   if(tagList2[tag] == undefined || tagList2[tag] ==null) {
-    console.log("Error: No tag found!");
     document.getElementById("data-chart1").setAttribute("data-percent", questionPercent);
     //document.getElementById("data-chart2").setAttribute("data-percent", tagList[tag].unansweredQuestionPercent);
     document.getElementById("data-chart1").innerHTML ="<span class='percent'>"+questionPercent+"%</span>";
