@@ -4,7 +4,7 @@ function bubble_chart_init(tagName)
   var fileName;
   if(root.name == tagName)
   {
-      fileName = "android";
+      fileName = tagName;
   }
   else {
       fileName = getFileFromTag(root,tagName);
