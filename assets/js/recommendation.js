@@ -1,6 +1,14 @@
 var unanswered = true,
     answered = true;
 
+var maxAnswers=-1,
+    minAnswers=80,
+    maxVotes=-10,
+    minVotes=200,
+    minDate=200000000000,
+    maxDate=0;
+
+
 // TODO: Flush this object as soon as any node is selected from tree
 var deletedTags = {};
 
@@ -49,28 +57,25 @@ window.watch("ans_max",function(id,oldval,newval){
   return newval;
 });
 window.watch("tagListLength",function(id,oldval,newval){
+//  myf(id,newval);
   filterByTag(id,newval);
   return newval
 });
 
 function filterByTag(a,b){
     questionList = qList.filter((val) =>{
-      // for(var tag in val.tags){
-      //   console.log(val.tags[tag]);
-      // }
       for(tag in tagList){
-      //  console.log("taglist "+tag);
         if(val.tags.indexOf(tag)===-1){
           return false;
         }
       }
-    //  console.log(val.tags);
       return true;
 
         });
-        renderQuestions();
-        renderTags();
+        renderQuestions(a,b);
+        renderTags(a,b);
         renderCharts("java");
+
 }
 
 function myf(a,b){
@@ -89,8 +94,9 @@ function myf(a,b){
   }
     return true;
   });
-  renderQuestions();
-  renderTags();
+  filterByTag(a,b);
+  renderQuestions(a,b);
+  renderTags(a,b);
   renderCharts("java");
 }
 
@@ -98,9 +104,21 @@ function myf(a,b){
 ** renders questions in question panel
 ** @param (event, boolean, boolean, string) => (event, question-type flag, question-type flag, tag to be removed)
 */
-function renderQuestions(e) {
+function renderQuestions(a,b) {
+  maxAnswers=-1;
+      minAnswers=80;
+      maxVotes=-10;
+      minVotes=200;
+      minDate=200000000000;
+      maxDate=0;
   var list = '<ul>';
   for(var i=0; i < questionList.length; i++) {
+    maxAnswers=Math.max(maxAnswers,questionList[i].answers);
+    minAnswers=Math.min(minAnswers,questionList[i].answers);
+    maxVotes=Math.max(maxVotes,questionList[i].votes);
+    minVotes=Math.min(minVotes,questionList[i].votes);
+    minDate=Math.min(minDate,questionList[i].timestamp);
+    maxDate=Math.max(maxDate,questionList[i].timestamp);
     var tagMatched = false;
     if(!unanswered && questionList[i].answers == 0) {
       continue;
@@ -124,22 +142,25 @@ function renderQuestions(e) {
       tags = tags + "<button class='btn btn-default'>"+questionList[i].tags[j] +"</button>";
     }
     tags = tags + '</div>';
-    var recommended_questions="here";
+    var recommended_questions="<h4>Top Recommended Questions </h4> <div><h6>1. "+questionList[i].reco1+"</h6></div><div><h6>2. "+questionList[i].reco2+"</h6></div><div><h6>3. "+questionList[i].reco3+"</h6></div>";
   //  var recommended = "<button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#collapseExample"+i+"' aria-expanded='false' aria-controls='collapseExample'>Button</button>"
-    var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div><li class='collapse' id='collapseExample"+i+"'><div class='well'>"+recommended_questions+"</div></li>",
+    var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><h4>"+ questionList[i].question +"</h4> "+tags+"</div><div class='recos'><li class='collapse' id='collapseExample"+i+"'><div class='well'>"+recommended_questions+"</div></li></div>",
         content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers+"</span> </br> answers </span>"+ question +"</div>";
-        list = list + "<li data-id="+i+" data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+((questionList.length-i)/questionList.length)+"'></div> " + content + "</li>";
+        list = list + "<li data-id="+i+" data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+(questionList[i].votes/40)+"'></div> " + content + "</li>";
   }
 
   list = list + "</ul>";
   document.getElementById("questionList").innerHTML = list;
   document.getElementById("heading-questions").innerHTML = questionList.length +" Questions";
+  adjustFilters(a);
+//  console.log("min - "+minAnswers+"  "+minVotes+"  "+ new Date(minDate*1000).toGMTString());
+  //console.log("max - "+maxAnswers+"  "+maxVotes+"  "+ new Date(maxDate*1000).toGMTString());
 }
 
 /*
 ** renders tags in control panel
 */
-function renderTags(e) {
+function renderTags(a,b) {
   var tags = "";
   for(var obj in tagList) {
     tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ obj +" onclick='removeTag(this.value)'>"+ obj+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
@@ -148,8 +169,9 @@ function renderTags(e) {
 }
 
 function renderCharts(tag) {
-  var questionPercent = (tagList[tag].size / 215968 * 100).toFixed(2);
-  if(tagList[tag] == undefined || tagList[tag] ==null) {
+  var questionPercent = (tagList2[tag].size / 215968 * 100).toFixed(2);
+
+  if(tagList2[tag] == undefined || tagList2[tag] ==null) {
     console.log("Error: No tag found!");
     document.getElementById("data-chart1").setAttribute("data-percent", questionPercent);
     //document.getElementById("data-chart2").setAttribute("data-percent", tagList[tag].unansweredQuestionPercent);
