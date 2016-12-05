@@ -220,6 +220,7 @@ function questionOnClick(question) {
      var id ="#collapseExample"+question.getAttribute('data-id');
      $(id).collapse('hide');
      question.classList.remove('selected');
+  //   addRemoveTag(qu);
      refresh();
    } else {
      var id2 ="#collapseExample"+question.getAttribute('data-id');

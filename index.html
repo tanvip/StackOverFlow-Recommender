@@ -10,6 +10,20 @@
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>      .chartLegend {
+    list-style: none;
+    margin: 0;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-size: 12px;
+    font-color: #666;
+}
+.chartLegend span {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    margin-right: 10px;
+		border-radius: 2px;
+}</style>
 
 <!--Icons-->
 <script src="js/lumino.glyphs.js"></script>
@@ -156,8 +170,14 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading" style="padding-bottom:0px;height:90px;"><div class="row">Questions & Answers vs Time</div>
-						<div class="row"><span style="font-size:12px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Traffic Overview</span></div>
+					<div class="panel-heading" style="padding-bottom:0px;height:90px;"><div class="row"><div class="col-sm-5">Questions & Answers vs Time</div>
+					<div class="col-sm-5 chartLegend">
+										<span  style="background: #bbbbbb"></span>Questions  <span>   </span>
+										<span  style="background: #08f"></span>Answers
+								 </div></div>
+						<div class="row"><span style="font-size:12px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Traffic Overview</span>
+
+						</div>
 					</div>
 
 					<div class="panel-body">
