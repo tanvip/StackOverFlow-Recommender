@@ -15,6 +15,9 @@ window.addEventListener('DOMContentLoaded', function(e) {
 */
 function selectNode(tag) {
   deletedTags = {};
+  renderCharts(tag);
+  bubble_chart_init(tag);
+  console.log(tagList);
 }
 
 function getTime(timeStamp_value) {
@@ -137,25 +140,31 @@ function renderQuestions(e) {
 function renderTags(e) {
   var tags = "";
   for(var obj in tagList) {
-    if(deletedTags[obj.toLowerCase()]) continue;
-    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ obj +" onclick='removeTag(this)'>"+ obj+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
+    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ obj +" onclick='removeTag(this.value)'>"+ obj+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
   }
   document.getElementById("controls--tags").innerHTML = tags;
 }
 
 function renderCharts(tag) {
+  var questionPercent = (tagList[tag].size / 215968 * 100).toFixed(2);
   if(tagList[tag] == undefined || tagList[tag] ==null) {
     console.log("Error: No tag found!");
-    document.getElementById("data-chart1").setAttribute("data-percent", 92);
-    document.getElementById("data-chart2").setAttribute("data-percent", 65);
-    document.getElementById("data-chart-header1").innerHTML = "<h4>Questions for <strong>JAVA</strong> tag</h4>";
-    document.getElementById("data-chart-header2").innerHTML = "<h4>Unanswered questions for <strong>JAVA</strong> tag</h4>";
+    document.getElementById("data-chart1").setAttribute("data-percent", questionPercent);
+    //document.getElementById("data-chart2").setAttribute("data-percent", tagList[tag].unansweredQuestionPercent);
+    document.getElementById("data-chart1").innerHTML ="<span class='percent'>"+questionPercent+"%</span>";
+    //document.getElementById("data-chart2").innerHTML ="<span class='percent'>"+tagList[tag].unansweredQuestionPercent+"%</span>";
+    document.getElementById("data-chart-header1").innerHTML = "<h4>Questions for <strong>"+tag+"</strong> tag</h4>";
+    //document.getElementById("data-chart-header2").innerHTML = "<h4>Unanswered questions for <strong>"+tag+"</strong> tag</h4>";
+    document.getElementById("data-wordcloud-header").innerHTML = "<h4>You selected <strong>"+tag+"</strong> tag</h4><br><h5>Following are nearest tags to your selection.</h5>";
     return;
   }
-  document.getElementById("data-chart1").setAttribute("data-percent", tagList[tag].questionPercent);
-  document.getElementById("data-chart2").setAttribute("data-percent", tagList[tag].unansweredQuestionPercent);
+  document.getElementById("data-chart1").setAttribute("data-percent", questionPercent);
+  //document.getElementById("data-chart2").setAttribute("data-percent", tagList[tag].unansweredQuestionPercent);
   document.getElementById("data-chart-header1").innerHTML = "<h4>Questions for <strong>"+tag+"</strong> tag</h4>";
-  document.getElementById("data-chart-header2").innerHTML = "<h4>Unanswered questions for <strong>"+tag+"</strong> tag</h4>";
+  //document.getElementById("data-chart-header2").innerHTML = "<h4>Unanswered questions for <strong>"+tag+"</strong> tag</h4>";
+  document.getElementById("data-wordcloud-header").innerHTML = "<h4>You selected <strong>"+tag+"</strong> tag</h4><br><h5>Following are nearest tags to your selection.</h5>";
+  document.getElementById("data-chart1").innerHTML ="<span class='percent'>"+questionPercent+"%</span>";
+  //document.getElementById("data-chart2").innerHTML ="<span class='percent'>"+tagList[tag].unansweredQuestionPercent+"%</span>";
 }
 
 
@@ -207,7 +216,11 @@ function filterQuestionType(e) {
 }
 
 function removeTag(e) {
-  deletedTags[e.value.toLowerCase()] = true;
-  renderQuestions(e, e.value);
-  renderTags(e);
+  var d=tagList[e].node;
+  delete tagList[e];
+  renderTags();
+  filterByTag();
+  renderQuestions();
+  deactivate(d);
+//  clearTag(e);
 }

@@ -8,6 +8,7 @@ $(document).ready(function() {
       min: new Date(2014, 1, 1),
       max: new Date(2014, 10, 31)
     },
+    arrows:false,
     step:1
     });
     $("#rangeSlider").rangeSlider({
@@ -16,6 +17,7 @@ $(document).ready(function() {
         max: 250
       },
       step:1,
+      arrows:false,
       defaultValues:{
         min: 10,
         max: 70
@@ -28,6 +30,7 @@ $(document).ready(function() {
       max: 30
     },
     step:1,
+    arrows:false,
     defaultValues:{
       min: 1,
       max: 5
