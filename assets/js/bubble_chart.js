@@ -43,7 +43,8 @@ function bubble_chart_init(tagName)
         node.append("circle")
             .attr("id", function(d) { return d.id; })
             .attr("r", function(d) { return d.r; })
-            .style("fill", function(d) { return color(d.package); });
+            .attr("globalAlpha", 0.5) 
+            .style("fill", function(d) { return color('#a0c1f7'); });
 
         node.append("clipPath")
             .attr("id", function(d) { return "clip-" + d.id; })
