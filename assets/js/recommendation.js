@@ -140,8 +140,7 @@ function renderQuestions(e) {
 function renderTags(e) {
   var tags = "";
   for(var obj in tagList) {
-    if(deletedTags[obj.toLowerCase()]) continue;
-    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ obj +" onclick='removeTag(this)'>"+ obj+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
+    tags = tags + "<button class='btn btn-default padding-small margin-right-small' value="+ obj +" onclick='removeTag(this.value)'>"+ obj+" <i class='fa fa-times-circle' aria-hidden='true'></i> </button>";
   }
   document.getElementById("controls--tags").innerHTML = tags;
 }
@@ -217,7 +216,11 @@ function filterQuestionType(e) {
 }
 
 function removeTag(e) {
-  deletedTags[e.value.toLowerCase()] = true;
-  renderQuestions(e, e.value);
-  renderTags(e);
+  var d=tagList[e].node;
+  delete tagList[e];
+  renderTags();
+  filterByTag();
+  renderQuestions();
+  deactivate(d);
+//  clearTag(e);
 }
