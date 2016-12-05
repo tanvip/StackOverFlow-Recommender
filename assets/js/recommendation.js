@@ -208,6 +208,7 @@ function filterQuestionType(e) {
 
 function removeTag(e) {
   deletedTags[e.value.toLowerCase()] = true;
+  filterByTag();
   renderQuestions(e, e.value);
   renderTags(e);
 }
