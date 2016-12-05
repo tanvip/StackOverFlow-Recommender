@@ -131,7 +131,7 @@ function click(d) {
     d._children = null;
   }
   update(d);
-  addRemoveTag(d.name);
+  addRemoveTag(d.name,d.size,10,d);
   selectNode(d.name);
 }
 
@@ -150,7 +150,6 @@ function activate(d) {
 function deactivate(d)
 {
   if (d.children) {
-    console.log("d.children");
     d._children = d.children;
     d.children = null;
   }
@@ -183,6 +182,7 @@ function highlightTag(tag)
 
 function clearTag(tag)
 {
+    console.log(tag);
     arr = new Array();
     highlightPath(root,tag,false);
     arr.forEach(function(d){d3.selectAll(d).style("stroke", defaultPathColor);})
