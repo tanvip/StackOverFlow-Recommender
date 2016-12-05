@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
 function selectNode(tag) {
   deletedTags = {};
   renderCharts(tag);
+  bubble_chart_init(tag);
   console.log(tagList);
 }
 
