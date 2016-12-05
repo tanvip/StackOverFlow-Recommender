@@ -17,7 +17,7 @@ function bubble_chart_init(tagName)
   var pack = d3new.pack()
       .size([width, width])
       .padding(1.5);
-      d3new.csv("DV_keywords_resut/" + fileName + "/1.txt", function(d) {
+      d3new.csv("DV_keywords_resut/" + fileName + "/4.txt", function(d) {
         d.value = +d.value;
         if (d.value) return d;
       }, function(error, classes) {
