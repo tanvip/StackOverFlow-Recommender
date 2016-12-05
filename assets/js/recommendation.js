@@ -123,9 +123,11 @@ function renderQuestions(e) {
       tags = tags + "<button class='btn btn-default'>"+questionList[i].tags[j] +"</button>";
     }
     tags = tags + '</div>';
-    var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div>",
+    var recommended_questions="here";
+  //  var recommended = "<button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#collapseExample"+i+"' aria-expanded='false' aria-controls='collapseExample'>Button</button>"
+    var question = "<div class='chat-body clearfix'> <div class='header'> <small class='text-muted'>"+ getTime(questionList[i].timestamp)+"</small></div><p>"+ questionList[i].question +"</p> "+tags+"</div><li class='collapse' id='collapseExample"+i+"'><div class='well'>"+recommended_questions+"</div></li>",
         content = "<div class='question-list'> <span class='chat-img pull-left content-align-center'> <span class='font-medium'>"+ questionList[i].answers+"</span> </br> answers </span>"+ question +"</div>";
-        list = list + "<li data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+((questionList.length-i)/questionList.length)+"'></div> " + content + "</li>";
+        list = list + "<li data-id="+i+" data-index="+questionList[i].index +" onclick='questionOnClick(this)' class='left clearfix animate-box-drop'> <div class='recommendation-box col-md-2' style='opacity:"+((questionList.length-i)/questionList.length)+"'></div> " + content + "</li>";
   }
 
   list = list + "</ul>";
@@ -145,6 +147,7 @@ function renderTags(e) {
 }
 
 function renderCharts(tag) {
+
   var questionPercent = tagList[tag].size / 215968 * 100;
   if(tagList[tag] == undefined || tagList[tag] ==null) {
     console.log("Error: No tag found!");
@@ -173,14 +176,20 @@ function renderCharts(tag) {
 */
 function questionOnClick(question) {
    if(question.classList.contains('selected')) {
+     var id ="#collapseExample"+question.getAttribute('data-id');
+     $(id).collapse('hide');
      question.classList.remove('selected');
      refresh();
    } else {
+     var id2 ="#collapseExample"+question.getAttribute('data-id');
+     $(id2).collapse('show');
      var children = question.parentElement.childNodes;
      // deselect all other questions
      for(var i=0; i < children.length; i++) {
        if(children[i].classList.contains('selected')) {
          children[i].classList.remove('selected');
+         var id3 ="#collapseExample"+children[i].getAttribute('data-id');
+         $(id3).collapse('hide');
        }
      }
      question.classList.add('selected');
