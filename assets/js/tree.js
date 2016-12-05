@@ -133,6 +133,7 @@ function click(d) {
   update(d);
   addRemoveTag(d.name,d.size,10,d);
   selectNode(d.name);
+  bubble_chart_init(d.name);
 }
 
 // If the node is not open it will open it

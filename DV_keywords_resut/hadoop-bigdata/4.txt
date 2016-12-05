@@ -1,5 +1,5 @@
 id,value
-hadoop, 8
-mapreduce, 2
-directory, 2
-spark, 2
+Hadoop, 8
+Mapreduce, 2
+Directory, 2
+Spark, 2

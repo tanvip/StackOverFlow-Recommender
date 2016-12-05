@@ -10,8 +10,12 @@ function bubble_chart_init(tagName)
       fileName = getFileFromTag(root,tagName);
   }
   if(fileName.length < 1){alert("could not file keywords for specified tag");}
-  var svg = d3new.select("#keyword-wordcloud"),
-      width = +svg.attr("width");
+  d3new.select("#keyword-wordcloud").select('svg').remove();
+  var svg = d3new.select("#keyword-wordcloud")
+                  .append('svg')
+                  .attr('width',960)
+                  .attr('height',880);
+  var  width = +svg.attr("width");
   var format = d3new.format(",d");
   var color = d3new.scaleOrdinal(d3new.schemeCategory20c);
   var pack = d3new.pack()
@@ -43,7 +47,7 @@ function bubble_chart_init(tagName)
         node.append("circle")
             .attr("id", function(d) { return d.id; })
             .attr("r", function(d) { return d.r; })
-            .attr("globalAlpha", 0.5) 
+            .attr("globalAlpha", 0.5)
             .style("fill", function(d) { return color('#a0c1f7'); });
 
         node.append("clipPath")

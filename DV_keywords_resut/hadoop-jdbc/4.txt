@@ -1,12 +1,12 @@
 id,value
-hive, 12
-jdbc, 10
-connection, 3
-select, 2
-unset, 2
-protocol, 2
-java, 2
-query, 2
-server, 2
-hadoop, 2
-table, 2
+Hive, 12
+Jdbc, 10
+Connection, 3
+Select, 2
+Unset, 2
+Protocol, 2
+Java, 2
+Query, 2
+Server, 2
+Hadoop, 2
+Table, 2

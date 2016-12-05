@@ -1,12 +1,12 @@
 id,value
-server, 23
-client, 16
-java, 9
-socket, 9
-connection, 3
-receive, 3
-chat, 3
-data, 2
-type, 2
-send, 2
-application, 2
+Server, 23
+Client, 16
+Java, 9
+Socket, 9
+Connection, 3
+Receive, 3
+Chat, 3
+Data, 2
+Type, 2
+Send, 2
+Application, 2
