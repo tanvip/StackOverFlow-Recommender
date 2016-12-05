@@ -1,0 +1,23 @@
+id,value
+time complexity, 5
+how i, 4
+integer array, 3
+grid quot, 3
+dynamic programming, 2
+all permutations, 2
+o time, 2
+elements sum, 2
+d array, 2
+sorting algorithms, 2
+common elements, 2
+arrays sort, 2
+quot grid, 2
+finding nearest, 2
+numbers d, 2
+an integer, 2
+number elements, 2
+elements belong, 2
+algorithm finding, 2
+find smallest, 2
+insertion sort, 2
+sorting algorithm, 2

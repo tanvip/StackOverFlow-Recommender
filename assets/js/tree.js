@@ -20,13 +20,14 @@ var svg = d3.select("#nav-tree").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("json/flare.json", function(error, flare) {
+d3.json("json/flare4.json", function(error, flare) {
   if (error) throw error;
 
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;
   refresh();
+  bubble_chart_init(root.name);
 });
 
 d3.select(self.frameElement).style("height", "800px");
@@ -67,7 +68,7 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-      .attr("r", 4.5)
+      .attr("r", function(d){ return d.val ? d.val : 4.5})
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeUpdate.select("text")
@@ -130,6 +131,7 @@ function click(d) {
     d._children = null;
   }
   update(d);
+  addRemoveTag(d.name);
   selectNode(d.name);
 }
 
@@ -141,7 +143,7 @@ function activate(d) {
     d.children = d._children;
     d._children = null;
   }
-  update(d);
+    update(d);
 }
 
 //If the node is open it will close it

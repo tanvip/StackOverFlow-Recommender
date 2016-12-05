@@ -1,0 +1,12 @@
+id,value
+hive udf, 6
+org apache, 4
+hive table, 3
+apache hadoop, 3
+lang noclassdeffounderror, 2
+noclassdeffounderror org, 2
+udf execution, 2
+error hive, 2
+hive queries, 2
+execution error, 2
+table java, 2

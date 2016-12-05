@@ -1,0 +1,14 @@
+id,value
+json jersey, 7
+jax rs, 4
+jersey json, 3
+type=application json, 2
+converting json, 2
+jersey moxy, 2
+jersey jax, 2
+media type=application, 2
+json object, 2
+rs client, 2
+jersey jackson, 2
+messagebodyreader media, 2
+java jersey, 2

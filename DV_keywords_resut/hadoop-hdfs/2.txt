@@ -1,0 +1,19 @@
+id,value
+file hdfs, 6
+hdfs java, 5
+files hdfs, 4
+mapreduce job, 4
+java api, 3
+directory hdfs, 3
+hadoop job, 3
+hadoop hdfs, 3
+hadoop filesystem, 2
+text file, 2
+file hadoop, 2
+local directory, 2
+writing hdfs, 2
+hdfs local, 2
+file stored, 2
+hdfs copy, 2
+hadoop map, 2
+hdfs file, 2

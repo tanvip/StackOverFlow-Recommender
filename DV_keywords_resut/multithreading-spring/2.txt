@@ -1,0 +1,16 @@
+id,value
+spring mvc, 6
+spring batch, 6
+spring integration, 5
+multiple threads, 5
+spring framework, 3
+spring threadpooltaskexecutor, 3
+spring async, 3
+java spring, 2
+spring data, 2
+singleton bean, 2
+spring scheduled, 2
+thread sleep, 2
+how i, 2
+spring singleton, 2
+spring task, 2

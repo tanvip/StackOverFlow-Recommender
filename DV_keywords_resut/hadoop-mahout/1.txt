@@ -1,0 +1,12 @@
+id,value
+mahout, 11
+hadoop, 3
+based, 2
+idf, 2
+failed, 2
+vectors, 2
+processing, 2
+job, 2
+quot, 2
+running, 2
+tf, 2
